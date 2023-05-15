@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "64550ecfd4c7a0bb7c93d325"
+  },
+  "name": "Anant",
+  "email": "anant.patel4762@gmail.com",
+  "currentBalance": 50000
+},{
+  "_id": {
+    "$oid": "64550f0fd4c7a0bb7c93d326"
+  },
+  "name": "John",
+  "email": "john@gmail.com",
+  "currentBalance": 42000
+},{
+  "_id": {
+    "$oid": "6455141ed4c7a0bb7c93d327"
+  },
+  "name": "Adam",
+  "email": "adam@gmail.com",
+  "currentBalance": 25000
+},{
+  "_id": {
+    "$oid": "64551537d4c7a0bb7c93d32d"
+  },
+  "name": "Ashok",
+  "email": "ashok@gmail.com",
+  "currentBalance": 18000
+},{
+  "_id": {
+    "$oid": "6455155bd4c7a0bb7c93d32e"
+  },
+  "name": "Jane",
+  "email": "jane@gmail.com",
+  "currentBalance": 24000
+}]

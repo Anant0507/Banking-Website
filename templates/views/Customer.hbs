@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/Style.css">
+    <script src="js/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    {{>metalinks}}
+    <title>Document</title>
+</head>
+<body>
+    {{>navbar}}
+    {{!-- <div class="customerDetailsHeader">Customer Details</div> --}}
+    <table id="customer_table" class="customerTable">
+        <tr class="customerTableHeader">
+            <td>Account Number</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Current Balance</td>
+            <td>View Customer</td>
+        </tr>
+        {{#each Customer_Data}}
+            <form action="/customer" method="post">
+                <tr id="{{@index}}" class="customerTableRow">
+                    <td>{{accountNumber}}</td>
+                    <td name="customer_name" >{{name}}</td>
+                    <td name="customer_email">{{email}}</td>
+                    <td name="customer_balance">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                        {{currentBalance}}
+                    </td>
+                    <td>
+                        <input type="text" name="customer_name" value="{{name}}" style="display:none">
+                        <input type="email" name="customer_email" value="{{email}}" style="display:none">
+                        <input type="number" name="customer_balance" value="{{currentBalance}}" style="display:none">
+                        <input type="text" name="customer_account_number" value="{{accountNumber}}" style="display:none">
+                        <input class="view-details-btn" type="submit" value="View Details">
+                        
+                        {{!-- <button class="view-details-btn">View Details</button> --}}
+                    </td>
+                </tr>
+            </form>
+        {{/each}}
+    </table>
+</body>
+    <script>
+            const tableRows = document.querySelectorAll("#customer_table tr");
+
+        for (let i = 0; i < tableRows.length; i++) {
+            if (i % 2 !== 0) {
+                tableRows[i].style.backgroundColor = "lightgrey";
+            }
+        }
+    </script>
+</html>

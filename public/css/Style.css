@@ -1,0 +1,112 @@
+*{
+    padding:0;
+    margin:0;
+}
+#customer_table{
+    
+    border-collapse: collapse;
+}
+.myNavbar{
+    height:50px;
+    width:100%;
+    background-color: rgb(235, 235, 235);
+    box-shadow:0px 2px 6px 1px rgba(0,0,0,0.1),0px 2px 6px 1px rgba(0,0,0,0.1);
+}
+.bankName{
+    float: left;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    width:250px;
+    font-size:25px;
+    font-weight: bold;
+    padding-left:20px;
+}
+.iconColor{
+    padding-right: 10px;
+    font-size: 30px;
+    color:#4CAF50;
+}
+.viewCustomerContainer{
+    height:100%;
+}
+.viewCustomer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding-right: 20px; */
+    background-color: rgb(235, 235, 235);
+    font-size:17px;
+    font-weight: 600;
+    float:right;
+    width:200px;
+    height:50px;
+    text-decoration: none;
+    border:none;
+}
+.viewCustomer:hover{
+    height:50px;
+    background-color:#4CAF50;
+    color:white;
+}
+.customerDetailsHeader{
+    display: flex;
+    align-items: center;
+    font-size:40px;
+    width:100%;
+    height:100px;
+    padding-left: 20px;
+}
+.customerTable{
+    position: relative;
+    font-size: 17px;
+    top:40px;
+    width:100%;
+}
+.customerTableHeader{
+    font-weight: bold;
+    text-align: center;
+    height:40px;
+}
+.customerTableRow{
+    height:40px;
+    text-align: center;
+}
+.view-details-btn {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    /* width:90px; */
+}
+.customer_details_card{
+    position: relative;
+    top: 20px;
+    /* background-color: rgb(235, 235, 235); */
+    padding-left: 20px;
+}
+.welcome_name{
+    position: relative;
+    top: 20px;
+    padding-left: 20px;
+} 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+  
+  
+  
+  
+  
+  
+  

@@ -1,0 +1,40 @@
+
+    
+{
+    "account_number": "856912348756",
+    "name": "John Smith",
+    "email": "john.smith@example.com",
+    "current_balance": "$45,983.25"
+},
+{
+      "account_number": "102345678901",
+      "name": "Emily Wilson",
+      "email": "emily.wilson@example.com",
+      "current_balance": "$56,217.49"
+    },
+    {
+      "account_number": "234567890123",
+      "name": "Michael Chen",
+      "email": "michael.chen@example.com",
+      "current_balance": "$32,109.87"
+    },
+    {
+      "account_number": "345678901234",
+      "name": "Sarah Johnson",
+      "email": "sarah.johnson@example.com",
+      "current_balance": "$44,728.92"
+    },
+    {
+      "account_number": "456789012345",
+      "name": "David Lee",
+      "email": "david.lee@example.com",
+      "current_balance": "$60,871.76"
+    },
+    {
+      "account_number": "567890123456",
+      "name": "Jessica Davis",
+      "email": "jessica.davis@example.com",
+      "current_balance": "$29,678.50"
+    }
+
+    
