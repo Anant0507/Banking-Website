@@ -2,8 +2,8 @@ function compareBalance(){
     var current_balance = document.getElementById("curr_balance").innerHTML;
     var amount = document.getElementById("amt").value;
     var submit_button = document.getElementById("submit_button")
-    console.log(current_balance);
-    console.log(amount);
+    // console.log(current_balance);
+    // console.log(amount);
     if(current_balance <= parseInt(amount)){
         alert("Insufficient Balance!");
         submit_button.disabled = true;

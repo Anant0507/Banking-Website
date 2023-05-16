@@ -55,21 +55,42 @@ app.get("/customer", async(req, res) => {
 app.post("/customer", async (req, res) => {
     console.log(req.body.customer_account_number); 
     res.render("Single_Customer",{
-        CustomerData:req.body
+        CustomerData:req.body,
+        error_msg:null
     });
 })
 
 app.post("/transfer", async(req, res) => { 
-    const payer = await CustomerData.find({name:req.body.payer_name});
-    const payee = await CustomerData.find({name:req.body.payee_name});
-
-    const amount = req.body.amount;
-    await transfer_money(payer, payee, amount);
-
-    const customerdata = await CustomerData.find(); 
-    res.render("Customer",{
-        Customer_Data : customerdata
-    });
+    const payer = await CustomerData.find({accountNumber:req.body.payer_accountno});
+    const payee = await CustomerData.find({accountNumber:req.body.payee_accountno});
+    console.log(payee)
+    payerdata = {
+        customer_name:payer[0].name,
+        customer_email:payer[0].email,
+        customer_account_number:payer[0].accountNumber,
+        customer_balance:payer[0].currentBalance
+    };
+    console.log(payerdata);
+    console.log(payee.length);
+    if(payee.length == 0){
+        console.log("inside");
+        res.render("Single_Customer",{
+            CustomerData:payerdata,
+            error_msg: "*Account Not Found*"
+        });  
+    }
+    else{
+        const amount = req.body.amount;
+        await transfer_money(payer, payee, amount);
+    
+        const customerdata = await CustomerData.find(); 
+        res.render("Customer",{
+            Customer_Data : customerdata,
+            error_msg: ""
+    
+        });
+    }
+   
 });
 const transfer_money = async (payer, payee, amount) => {
     

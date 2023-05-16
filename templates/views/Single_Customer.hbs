@@ -7,7 +7,7 @@
     {{>metalinks}}
     <title>Dashboard</title>
 </head>
-<body>
+<body ng-app="myApp" ng-controller="Single_Customer_Controller">
     {{>navbar}}
     {{!-- <h1>Customer Details</h1> --}}
     <h2 class="welcome_name">Welcome, {{CustomerData.customer_name}}</h2>
@@ -17,7 +17,7 @@
         <div class="customer_details_card">
             <div>
                 <div>
-                    Account No.: <b>{{CustomerData.customer_account_number}}</b>
+                    Account No.: <b id="payer_account_number">{{CustomerData.customer_account_number}}</b>
                 </div>
                 <div>
                     Name: <b>{{CustomerData.customer_name}}</b>
@@ -36,15 +36,18 @@
     <br>
     <br>
     <div class="transfer_block">
-        <div class="transfer_header">Transfer Now</div>
+        <div class="transfer_header">Make Transaction</div>
         <div class="underline"></div>
         <div class="transfer_card">
             <form action="/transfer" method="post">
-                <input type="text" value="{{CustomerData.customer_name}}" name="payer_name" style="display:none">
-                <input type="text" name="payee_name" placeholder="To"> <br> <br>
-                <input type="number" name="amount" placeholder="Amount" id="amt" onblur="compareBalance()"> <br> <br>
+                <input type="number" value="{{CustomerData.customer_account_number}}" name="payer_accountno" style="display:none">
+                <input type="number" name="payee_accountno" placeholder="payee account no." ng-change="checkAccountNumber()" ng-model="payee_account_number">
+                {{!-- <input type="text" name="payee_name" placeholder="payee name" > <br> <br> --}}
+                <input type="number" name="amount" placeholder="Amount" id="amt" onblur="compareBalance()">
+                <div class="error_message">{{error_msg}}</div>
                 <input class="transfer_button" type="submit" value="Transfer" id="submit_button">
             </form>
+            
         </div>
     </div>
     <script src="js/main.js"></script>
