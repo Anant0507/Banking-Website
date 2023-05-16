@@ -11,30 +11,42 @@
     {{>navbar}}
     {{!-- <h1>Customer Details</h1> --}}
     <h2 class="welcome_name">Welcome, {{CustomerData.customer_name}}</h2>
-    <div class="customer_details_card">
-        <div>
-            Account No.: <b>{{CustomerData.customer_account_number}}</b>
+    <div class="customer_info_container">
+        <div class="customer_details_header"> Customer Details </div>
+        <div class="underline"></div>
+        <div class="customer_details_card">
+            <div>
+                <div>
+                    Account No.: <b>{{CustomerData.customer_account_number}}</b>
+                </div>
+                <div>
+                    Name: <b>{{CustomerData.customer_name}}</b>
+                </div>
+                <div>
+                    Email: <b>{{CustomerData.customer_email}}</b>
+                </div>
+                <div>
+                    Balance: <b><i class="fa-solid fa-indian-rupee-sign"></i> <span id="curr_balance">{{CustomerData.customer_balance}}</span> </b>
+                </div>
+            </div>
         </div>
-        <div>
-            Name: <b>{{CustomerData.customer_name}}</b>
-        </div>
-        <div>
-            Email: <b>{{CustomerData.customer_email}}</b>
-        </div>
-        <div>
-            Balance: <span id="curr_balance"> <b><i class="fa-solid fa-indian-rupee-sign"></i> {{CustomerData.customer_balance}} </b></span> 
+        
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="transfer_block">
+        <div class="transfer_header">Transfer Now</div>
+        <div class="underline"></div>
+        <div class="transfer_card">
+            <form action="/transfer" method="post">
+                <input type="text" value="{{CustomerData.customer_name}}" name="payer_name" style="display:none">
+                <input type="text" name="payee_name" placeholder="To"> <br> <br>
+                <input type="number" name="amount" placeholder="Amount" id="amt" onblur="compareBalance()"> <br> <br>
+                <input class="transfer_button" type="submit" value="Transfer" id="submit_button">
+            </form>
         </div>
     </div>
-     <br>
-     <br>
-    
-    <br>
-    <form action="/transfer" method="post">
-        <input type="text" value="{{CustomerData.customer_name}}" name="payer_name" style="display:none">
-        <input type="text" name="payee_name"> <br> <br>
-        <input type="number" name="amount" id="amt" onblur="compareBalance()"> <br> <br>
-        <input type="submit" value="Transfer" id="submit_button">
-    </form>
-
+    <script src="js/main.js"></script>
 </body>
 </html>
