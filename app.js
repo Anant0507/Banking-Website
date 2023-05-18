@@ -24,6 +24,11 @@ const mySchema = mongoose.Schema({
     },
     accountNumber:{
         type:String,
+        required:true,
+        unique:true
+    },
+    password:{
+        type:String,
         required:true
     }
 });
@@ -73,7 +78,6 @@ app.post("/transfer", async(req, res) => {
     console.log(payerdata);
     console.log(payee.length);
     if(payee.length == 0){
-        console.log("inside");
         res.render("Single_Customer",{
             CustomerData:payerdata,
             error_msg: "*Account Not Found*"
@@ -103,5 +107,38 @@ const transfer_money = async (payer, payee, amount) => {
     console.log(payee_result);
 
 }
+app.get("/Login", async (req,res) => {
+    res.render("Login");
+});
+app.post("/Login",async (req, res) => {
+    console.log(req.body);
+    const user_data = await CustomerData.find({accountNumber:req.body.User_account_number});
+    
+    if(user_data.length !=0)
+    {
+        if(req.body.User_password == user_data[0].password){
+            const userdata = {
+                customer_name:user_data[0].name,
+                customer_email:user_data[0].email,
+                customer_account_number:user_data[0].accountNumber,
+                customer_balance:user_data[0].currentBalance
+            };
+            res.render("Single_Customer",{
+                CustomerData:userdata
+            });
+        }
+        else{
+            res.render("Login",{
+                error_msg:"*Invalid Login Credentials*"
+            });
+        }
+    }
+    else{
+        res.render("Login",{
+            error_msg:"*Invalid Login Credentials*"
+        });
+    }
+    
+})
 
 app.listen("8000","127.0.0.1",() => console.log("listening at port no. 8000"));

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{>metalinks}}
+    <title>Login</title>
+    <style>
+        body, html{
+            height:96%;
+        }
+        .Background_image{
+            background-image: url("images/Buildings_bg.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body class="Background_image">
+    {{>navbar}} 
+    <div class="Overlay"></div>
+    <div class="Login_card" >
+        <div class="Login_Header">
+            {{!-- <i class="fa-solid fa-building-columns Login_icon"></i> <span class="Login_bank_name"> National Bank </span> --}}
+            Login 
+        </div>
+        <div class="Login_details">
+            <form action="/Login" method="post">
+                <span style="color:white"> Account No.: </span><br>
+                <input type="number" placeholder="Enter Account Number" name="User_account_number" class="Account_No_input" autocomplete="off"> <br> <br>
+                <span style="color:white"> Password: </span><br>
+                <input type="password" placeholder="Enter Password" name="User_password" class="Password_input"> <br>
+                <div class="forgot_password"> Forgot Password? </div>
+                <div class="Login_button_container">
+                    <input type="submit" value="Login" class="Login_button">
+                </div>
+                <div class="Sign_Up_Container">
+                    Dont have an Account? <span class="Sign_Up">Sign Up</span>
+                </div>
+            </form> 
+            
+            <div class="error_message">{{error_msg}}</div>
+        </div>
+    </div> 
+   
+    
+</body>
+</html>
