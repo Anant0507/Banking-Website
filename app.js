@@ -3,7 +3,7 @@ const app = express();
 const hbs = require("hbs");
 const path = require("path");
 const mongoose = require("mongoose");
-
+const fs = require("fs");
 mongoose.connect("mongodb://127.0.0.1:27017/Bank")
 .then(() => console.log("Connection Successfull..."))
 .catch((err) => console.log("Error Occured..."));
@@ -112,20 +112,33 @@ app.get("/Login", async (req,res) => {
 });
 app.post("/Login",async (req, res) => {
     console.log(req.body);
-    const user_data = await CustomerData.find({accountNumber:req.body.User_account_number});
-    
-    if(user_data.length !=0)
+    if(req.body.User_account_number == "0000" && req.body.User_password == "admin123")
     {
-        if(req.body.User_password == user_data[0].password){
-            const userdata = {
-                customer_name:user_data[0].name,
-                customer_email:user_data[0].email,
-                customer_account_number:user_data[0].accountNumber,
-                customer_balance:user_data[0].currentBalance
-            };
-            res.render("Single_Customer",{
-                CustomerData:userdata
-            });
+        const customerdata = await CustomerData.find();
+        res.render("Customer",{
+            Customer_Data:customerdata
+        });
+    }
+    else{
+        const user_data = await CustomerData.find({accountNumber:req.body.User_account_number});
+        if(user_data.length !=0)
+        {
+            if(req.body.User_password == user_data[0].password){
+                const userdata = {
+                    customer_name:user_data[0].name,
+                    customer_email:user_data[0].email,
+                    customer_account_number:user_data[0].accountNumber,
+                    customer_balance:user_data[0].currentBalance
+                };
+                res.render("Single_Customer",{
+                    CustomerData:userdata
+                });
+            }
+            else{
+                res.render("Login",{
+                    error_msg:"*Invalid Login Credentials*"
+                });
+            }
         }
         else{
             res.render("Login",{
@@ -133,12 +146,14 @@ app.post("/Login",async (req, res) => {
             });
         }
     }
-    else{
-        res.render("Login",{
-            error_msg:"*Invalid Login Credentials*"
-        });
-    }
-    
+});
+app.get("/home", async (req, res) => {
+    res.render("home");
+});
+app.get("/forgotpassword", async (req, res) => {
+    fs.readFile(path.join(__dirname,"./public/StaticPages/ForgotPassword.html"),"utf-8", (err, data) => {
+        res.send(data);        
+    })
 })
 
 app.listen("8000","127.0.0.1",() => console.log("listening at port no. 8000"));
