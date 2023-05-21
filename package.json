@@ -5,14 +5,17 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev":"nodemon app.js -e hbs,html,css,js"
+    "dev": "nodemon src/app.js -e hbs,html,css,js"
   },
   "author": "Anant Patel",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "handlebars": "^4.7.7",
     "hbs": "^4.2.0",
-    "mongoose": "^7.1.0"
+    "mongoose": "^7.1.0",
+    "nodemailer": "^6.9.2"
   }
 }

@@ -11,3 +11,16 @@ app.controller("Single_Customer_Controller",function($scope){
         }
     }
 });
+app.controller("Change_Password_Controller",function($scope){
+    $scope.checkNewPassword = function(){
+        var change_password_button = document.getElementById("change_password_button");
+        if($scope.new_password != $scope.reenter_password){
+            change_password_button.disabled = true;
+            $scope.error_msg = "Password not matching"
+        }
+        else{
+            change_password_button.disabled = false;
+            $scope.error_msg = "";
+        }
+    }
+})

@@ -51,7 +51,7 @@
     background-color:#4CAF50;
     color:white;
 }
-.LoginNavBar{
+.NavBarElement{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,8 +64,9 @@
     height:50px;
     text-decoration: none;
     border:none; 
+    color:black;
 }
-.LoginNavBar:hover{
+.NavBarElement:hover{
     height:50px;
     background-color:#4CAF50;
     color:white;
@@ -213,9 +214,14 @@ input[type=password]{
 input[type=password]:focus{
     border:2px solid #3a833c;
 }
+input[type=email]{
+    padding: 5px;
+    outline:none;
+}
+input[type=email]:focus{
+    border:2px solid #3a833c;
+}
 .error_message{
-    height:30px;
-    color:red;
     font-weight: 600;
 }
 .Login_button_container{

@@ -34,7 +34,7 @@
                 <span style="color:white"> Password: </span><br>
                 <input type="password" placeholder="Enter Password" name="User_password" class="Password_input"> <br>
                 <div class="forgot_password">
-                    <a href="./ForgotPassword">Forgot Password?</a>
+                    <a href="/forgotpassword">Forgot Password?</a>
                 </div>
                 <div class="Login_button_container">
                     <input type="submit" value="Login" class="Login_button">
@@ -44,7 +44,11 @@
                 </div>
             </form> 
             
-            <div class="error_message">{{error_msg}}</div>
+            <div class="error_message">
+                <span style="color:red">{{error_msg}}</span>
+                <span style="color:limegreen">{{password_change}}</span>
+
+            </div>
         </div>
     </div> 
    
